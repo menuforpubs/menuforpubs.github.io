@@ -1,0 +1,58 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.7rem;
+  padding: 1rem 0.8rem;
+  color: white;
+}
+
+.line-through {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+
+.price-container {
+  //   display: flex;
+}
+
+.link {
+  color: #8ab4f7;
+  text-decoration: underline;
+}
+
+.product-description {
+  font-size: 1.7rem;
+  margin-top: 0.7rem;
+  margin-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.price {
+  font-size: 1.8rem;
+}
+.sale {
+  color: rgb(255, 187, 0);
+  animation: glow 0.5s infinite;
+  font-weight: bold;
+}
+
+@keyframes glow {
+  50% {
+    text-shadow: 0px 0px 5px rgb(255, 187, 0);
+  }
+}

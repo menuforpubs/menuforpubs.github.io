@@ -1,0 +1,36 @@
+.container {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  font-size: 4rem;
+  height: 6.5rem;
+  //   font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  color: white;
+  fill: white;
+  border-radius: 10px;
+  font-size: 2.5rem;
+  text-decoration: none;
+  align-items: center;
+  font-weight: bold;
+  display: flex;
+  background-color: #292929;
+  padding: 0.6rem 2rem 0.6rem 1.2rem;
+}
+
+.back-icon {
+  fill: white;
+  overflow: visible;
+  height: 3rem;
+  margin-left: 1rem;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  font-size: 4rem;
+  justify-content: center;
+}

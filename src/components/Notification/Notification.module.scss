@@ -1,0 +1,45 @@
+.container {
+  background-color: #292929;
+  position: relative;
+  text-align: right;
+  color: white;
+  margin: 0 2rem;
+  padding: 1.5rem 1.8rem;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.title {
+  font-size: 1.9rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  overflow-wrap: break-word;
+}
+
+.content {
+  font-size: 1.5rem;
+}
+
+.edit-button {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 3rem;
+}
+
+.add-notification-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-notification-button {
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+  padding: 0.6rem 0.6rem 0.6rem 1.2rem;
+  display: inline;
+  background-color: #292929;
+  border-radius: 10px;
+}

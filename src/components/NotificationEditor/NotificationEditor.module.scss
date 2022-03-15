@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 40vh;
+  justify-content: space-between;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 1.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.input {
+  height: 4rem;
+  font-size: 1.7rem;
+}
+
+.textarea {
+  resize: none;
+  height: 8rem;
+  font-size: 1.7rem;
+}
+
+.button {
+  padding: 1.5rem 3rem;
+  font-size: 1.8rem;
+  border-radius: 10px;
+}
+
+.save-button {
+  @extend .button;
+  background-color: green;
+  color: white;
+}
+
+.cancel-button {
+  @extend .button;
+  background-color: rgb(163, 162, 162);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trash-icon {
+  width: 4rem;
+}
+
+.hide-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+}
