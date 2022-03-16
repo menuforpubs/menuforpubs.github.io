@@ -27,7 +27,7 @@ const SubSectionEditor = ({ subSection: { subSection }, onCancel, onSave }) => {
     <div className={css['container']}>
       {subSection.id !== 'new' && (
         <div className={css['header']}>
-          <HideIcon className={css['hide-icon']} onClick={toggleIsHidden} />
+          {/* <HideIcon className={css['hide-icon']} onClick={toggleIsHidden} /> */}
         </div>
       )}
       <div className={css['field-container']}>
