@@ -1,12 +1,15 @@
-import React, { useState, createContext, useCallback } from 'react';
+import React, { useState, createContext, useCallback, useEffect } from 'react';
 
 import { getDocumentData, updateDocument } from 'utils/api.utils';
+
+import ErrorNotification from 'components/ErrorNotification/ErrorNotification';
 
 export const MenuContext = createContext({});
 
 const MenuProvider = ({ children }) => {
   const [menuData, setMenuData] = useState();
   const [isFetching, setIsFetching] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
 
   const getMenuData = useCallback(async (pubName) => {
     setMenuData(await getDocumentData('menus', pubName));
@@ -27,12 +30,22 @@ const MenuProvider = ({ children }) => {
     async (pubName, updatedSection) => {
       console.log(updatedSection);
       setIsFetching(true);
-      await updateDocument('menus', pubName, updatedSection);
+      try {
+        await updateDocument('menus', pubName, updatedSection);
+      } catch (e) {
+        setErrorMsg('הייתה בעיה בשמירה, יש לפנות לתמיכה');
+      }
       await getMenuData(pubName);
       setIsFetching(false);
     },
     [getMenuData]
   );
+
+  useEffect(() => {
+    if (errorMsg) {
+      setTimeout(() => setErrorMsg(), 3000);
+    }
+  }, [errorMsg]);
 
   return (
     <MenuContext.Provider
@@ -44,6 +57,7 @@ const MenuProvider = ({ children }) => {
         updateMenuData,
       }}
     >
+      {errorMsg && <ErrorNotification message={errorMsg} />}
       {children}
     </MenuContext.Provider>
   );
