@@ -8,7 +8,7 @@ import { usePermissons } from 'hooks/usePermissions';
 const cx = classNames.bind(css);
 
 const Product = ({ product, onSelect }) => {
-  const { name, description, price, isHidden } = product;
+  const { name, description, price, isHidden, salePrice } = product;
 
   const { isAdmin } = usePermissons();
 
@@ -25,7 +25,7 @@ const Product = ({ product, onSelect }) => {
         <div
           className={cx('product-name', {
             link: isAdmin,
-            sale: product.salePrice,
+            sale: salePrice,
           })}
         >
           {name}
@@ -33,10 +33,8 @@ const Product = ({ product, onSelect }) => {
         <div className={css['product-description']}>{description}</div>
       </div>
       <div className={css['price-container']}>
-        {product.salePrice && (
-          <div className={cx('price', 'sale')}>{product.salePrice}</div>
-        )}
-        <div className={cx('price', { 'line-through': product.salePrice })}>
+        {salePrice && <div className={cx('price', 'sale')}>{salePrice}</div>}
+        <div className={cx('price', { 'line-through': salePrice })}>
           {price}
         </div>
       </div>
