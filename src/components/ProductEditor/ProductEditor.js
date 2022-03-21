@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import set from 'lodash/fp/set';
-import pullAt from 'lodash/fp/pullAt';
+import filter from 'lodash/fp/filter';
 import get from 'lodash/fp/get';
 import flow from 'lodash/fp/flow';
+import findIndex from 'lodash/fp/findIndex';
+import size from 'lodash/fp/size';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames/bind';
 
@@ -24,8 +26,15 @@ const ProductEditor = ({
   const [salePrice, setSalePrice] = useState(product.salePrice || '');
 
   const handleSave = () => {
+    const productToSaveIndex =
+      product.id === 'new'
+        ? flow([get('products'), size])(subSection)
+        : flow([get('products'), findIndex(({ id }) => product.id === id)])(
+            subSection
+          );
+
     const updatedSubSection = set(
-      ['products', productIndex],
+      ['products', productToSaveIndex],
       {
         name,
         description,
@@ -39,16 +48,22 @@ const ProductEditor = ({
   };
 
   const handleDelete = () => {
-    const updatedProducts = flow([get('products'), pullAt(productIndex)])(
-      subSection
-    );
+    const updatedProducts = flow([
+      get('products'),
+      filter(({ id }) => product.id !== id),
+    ])(subSection);
     const updatedSubSection = set('products', updatedProducts, subSection);
     onSave(updatedSubSection);
   };
 
   const toggleIsHidden = () => {
+    const productToHideIndex = flow([
+      get('products'),
+      findIndex(({ id }) => product.id === id),
+    ])(subSection);
+
     const updatedSubSection = set(
-      ['products', productIndex, 'isHidden'],
+      ['products', productToHideIndex, 'isHidden'],
       !product.isHidden,
       subSection
     );

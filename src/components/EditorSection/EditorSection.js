@@ -16,7 +16,7 @@ import ProductEditor from 'components/ProductEditor/ProductEditor';
 import SubSectionEditor from 'components/SubSectionEditor/SubSectionEditor';
 import AdminUser from 'components/AdminUser/AdminUser';
 import SubSections from 'components/SubSections/SubSections';
-import Loader from 'components/Loader/Loader';
+import { MenuLoader } from 'components/Loader/Loader';
 
 Modal.setAppElement('#root');
 
@@ -77,7 +77,7 @@ const EditorSection = ({ match = {} }) => {
 
   return (
     <div className={css['container']}>
-      <Loader>
+      <MenuLoader>
         <AdminUser fallback={<SubSections subSections={subSections} />}>
           <SubSections
             subSections={subSections}
@@ -132,7 +132,7 @@ const EditorSection = ({ match = {} }) => {
             />
           )}
         </Modal>
-      </Loader>
+      </MenuLoader>
     </div>
   );
 };

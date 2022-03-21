@@ -1,4 +1,10 @@
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  getDocs,
+} from 'firebase/firestore';
 
 import { db } from 'firebase-config';
 
@@ -13,4 +19,12 @@ export const updateDocument = async (collectionName, documentName, diff) => {
   const docRef = doc(db, collectionName, documentName);
   console.log(docRef, diff);
   await updateDoc(docRef, diff);
+};
+
+export const getAllDocumentsFromCollection = async (collectionName) => {
+  const collectionRef = collection(db, collectionName);
+  const response = await getDocs(collectionRef);
+  let result = [];
+  response.forEach((doc) => result.push({ ...doc.data(), id: doc.id }));
+  return result;
 };

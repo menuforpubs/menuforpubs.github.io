@@ -4,6 +4,7 @@ import './App.css';
 
 import Routes from './components/Routes/Routes';
 import MenuProvider from 'components/MenuProvider/MenuProvider';
+import FeaturesProvider from 'components/FeaturesProvider/FeaturesProvider';
 
 function App() {
   useEffect(() => {
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <MenuProvider>
-      <Routes />
+      <FeaturesProvider>
+        <Routes />
+      </FeaturesProvider>
     </MenuProvider>
   );
 }

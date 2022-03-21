@@ -6,6 +6,7 @@ import history from 'utils/history.utils';
 import Header from 'components/Header/Header';
 import CategoriesGrid from 'components/CategoriesGrid/CategoriesGrid';
 import EditorSection from 'components/EditorSection/EditorSection';
+import Settings from 'components/Settings/Settings';
 
 import { withPageView } from 'hocs/withPageView';
 
@@ -25,6 +26,7 @@ export const Routes = () => (
         path="/:pubName/section/:path"
         component={EditorSectionWithPageView}
       />
+      <Route path="/:pubName/settings" component={Settings} />
     </Switch>
   </Router>
 );
