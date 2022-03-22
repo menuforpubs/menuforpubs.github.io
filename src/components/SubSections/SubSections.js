@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import noop from 'lodash/fp/noop';
 
 import ProductsSection from 'components/ProductsSection/ProductsSection';

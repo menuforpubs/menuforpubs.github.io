@@ -6,7 +6,7 @@ import set from 'lodash/fp/set';
 
 import css from './Settings.module.scss';
 
-import { SettingsLoader } from 'components/Loader/Loader';
+import { SettingsLoader, MenuLoader } from 'components/Loader/Loader';
 import { FeaturesContext } from 'components/FeaturesProvider/FeaturesProvider';
 import { MenuContext } from 'components/MenuProvider/MenuProvider';
 
@@ -24,7 +24,7 @@ const Settings = ({ match }) => {
   useEffect(() => {
     getFeaturesData();
     getInitialMenuData(pubName);
-  }, []);
+  }, [getFeaturesData, getInitialMenuData, pubName]);
 
   const updateFeatureStatus = (newState, featureId) => {
     const newFeaturesState = set(featureId, newState, menuFeatures);
@@ -34,26 +34,28 @@ const Settings = ({ match }) => {
   return (
     <div className={css['container']}>
       <SettingsLoader>
-        {features &&
-          features.map((feature) => (
-            <div key={feature.id} className={css['feature-container']}>
-              <div className={css['feature-info-container']}>
-                <div className={css['feature-name']}>{feature.title}</div>
-                {feature.description && (
-                  <div className={css['feature-description']}>
-                    {feature.description}
-                  </div>
-                )}
-              </div>
+        <MenuLoader>
+          {features &&
+            features.map((feature) => (
+              <div key={feature.id} className={css['feature-container']}>
+                <div className={css['feature-info-container']}>
+                  <div className={css['feature-name']}>{feature.title}</div>
+                  {feature.description && (
+                    <div className={css['feature-description']}>
+                      {feature.description}
+                    </div>
+                  )}
+                </div>
 
-              <Switch
-                onChange={(newState) =>
-                  updateFeatureStatus(newState, feature.id)
-                }
-                checked={getOr(false, feature.id, menuFeatures)}
-              />
-            </div>
-          ))}
+                <Switch
+                  onChange={(newState) =>
+                    updateFeatureStatus(newState, feature.id)
+                  }
+                  checked={getOr(false, feature.id, menuFeatures)}
+                />
+              </div>
+            ))}
+        </MenuLoader>
       </SettingsLoader>
     </div>
   );

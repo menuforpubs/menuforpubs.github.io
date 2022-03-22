@@ -48,7 +48,7 @@ const ProductsSection = ({
             orderBy(({ salePrice }) => toNumber(salePrice || ''), 'desc'),
           ])(subSection)
         : subSection.products,
-    [subSection]
+    [subSection, sortBySalePrice]
   );
 
   return (

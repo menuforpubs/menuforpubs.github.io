@@ -1,4 +1,4 @@
-import React, { useState, createContext, useCallback, useEffect } from 'react';
+import React, { useState, createContext, useCallback } from 'react';
 
 import { getAllDocumentsFromCollection } from 'utils/api.utils';
 

@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import css from './SubSectionEditor.module.scss';
 
-import { ReactComponent as HideIcon } from 'assets/images/hide.svg';
+// import { ReactComponent as HideIcon } from 'assets/images/hide.svg';
 
 const cx = classNames.bind(css);
 
@@ -21,7 +21,7 @@ const SubSectionEditor = ({ subSection: { subSection }, onCancel, onSave }) => {
     });
   };
 
-  const toggleIsHidden = () => {};
+  // const toggleIsHidden = () => {};
 
   return (
     <div className={css['container']}>

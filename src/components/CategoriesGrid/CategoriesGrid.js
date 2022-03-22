@@ -7,7 +7,7 @@ import css from './CategoriesGrid.module.scss';
 
 import { MenuContext } from 'components/MenuProvider/MenuProvider';
 import Notification from 'components/Notification/Notification';
-import Loader, { MenuLoader } from 'components/Loader/Loader';
+import { MenuLoader } from 'components/Loader/Loader';
 
 import { ReactComponent as BeerIcon } from 'assets/images/beer.svg';
 import { ReactComponent as FoodIcon } from 'assets/images/food1.svg';
