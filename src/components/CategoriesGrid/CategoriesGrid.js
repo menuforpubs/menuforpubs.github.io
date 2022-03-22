@@ -14,6 +14,7 @@ import { ReactComponent as FoodIcon } from 'assets/images/food1.svg';
 import { ReactComponent as CocktailIcon } from 'assets/images/cocktail.svg';
 import { ReactComponent as AlcoholIcon } from 'assets/images/alcohol.svg';
 import { ReactComponent as ColalIcon } from 'assets/images/cola.svg';
+import { ReactComponent as HookahIcon } from 'assets/images/hookah.svg';
 
 import { usePermissons } from 'hooks/usePermissions';
 import { getQueryParamsStr } from 'utils/queryString.utils';
@@ -24,6 +25,7 @@ const ICONS = {
   cocktails: CocktailIcon,
   alcohol: AlcoholIcon,
   drinks: ColalIcon,
+  hookahs: HookahIcon,
 };
 
 const CategoriesGrid = ({ match = {} }) => {
@@ -53,7 +55,7 @@ const CategoriesGrid = ({ match = {} }) => {
           {sections &&
             sections.map(({ path, title }) => {
               const IconComp = ICONS[path];
-              return (
+              return IconComp ? (
                 <Link
                   key={path}
                   className={css['category-container-link-test']}
@@ -70,7 +72,7 @@ const CategoriesGrid = ({ match = {} }) => {
                     <div className={css['label']}>{title}</div>
                   </div>
                 </Link>
-              );
+              ) : null;
             })}
         </div>
       </MenuLoader>
