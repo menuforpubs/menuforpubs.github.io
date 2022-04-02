@@ -46,19 +46,21 @@ const Category = ({
           : ''
       }`}
     >
-      <AdminUser>
-        <PencilIcon onClick={onEditClick} className={css['edit-icon']} />
-      </AdminUser>
       <div className={css['category-container']}>
         {imageUrl && (
-          <img
-            src={imageUrl}
-            className={css['category-image']}
-            alt={imagePath}
-            onLoad={onLoadImage}
-          />
+          <div className={css['image-container']}>
+            <img
+              src={imageUrl}
+              className={css['category-image']}
+              alt={imagePath}
+              onLoad={onLoadImage}
+            />
+          </div>
         )}
         <div className={css['label']}>{title}</div>
+        <AdminUser>
+          <PencilIcon onClick={onEditClick} className={css['edit-icon']} />
+        </AdminUser>
       </div>
     </Link>
   );
