@@ -1,6 +1,10 @@
 import React, { useState, createContext, useCallback, useEffect } from 'react';
+import get from 'lodash/fp/get';
+import map from 'lodash/fp/map';
+import set from 'lodash/fp/set';
 
 import { getDocumentData, updateDocument } from 'utils/api.utils';
+import { getFileAsync } from 'utils/file.utils';
 
 import ErrorNotification from 'components/ErrorNotification/ErrorNotification';
 
@@ -12,8 +16,30 @@ const MenuProvider = ({ children }) => {
   const [errorMsg, setErrorMsg] = useState();
 
   const getMenuData = useCallback(async (pubName) => {
-    setMenuData(await getDocumentData('menus', pubName));
+    const menuData = await getDocumentData('menus', pubName);
+    const menuDataWithImages = await getCategoriesImages(menuData);
+    setMenuData(menuDataWithImages);
+    return menuData;
   }, []);
+
+  const getCategoriesImages = async (menuData) => {
+    const sections = get('sections', menuData);
+    const sectionsWithImages = await Promise.all(
+      map(async ({ imagePath, ...rest }) => {
+        let imageUrl;
+        if (imagePath) {
+          imageUrl = await getFileAsync(`categoriesSvgs/${imagePath}`);
+        }
+        return {
+          ...rest,
+          imagePath,
+          imageUrl,
+        };
+      }, sections)
+    );
+
+    return set('sections', sectionsWithImages, menuData);
+  };
 
   const getInitialMenuData = useCallback(
     async (pubName) => {
@@ -28,7 +54,6 @@ const MenuProvider = ({ children }) => {
 
   const updateMenuData = useCallback(
     async (pubName, updatedSection) => {
-      console.log(updatedSection);
       setIsFetching(true);
       try {
         await updateDocument('menus', pubName, updatedSection);

@@ -3,22 +3,30 @@
   position: relative;
   text-align: right;
   color: white;
-  margin: 0 2rem;
-  padding: 1.5rem 1.8rem;
-  border-radius: 10px;
-  border: 1px solid black;
+  padding: 2rem 3rem;
+  -webkit-box-shadow: inset 0px 2px 16px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0px 2px 16px 0px rgba(0, 0, 0, 0.9);
+  animation: 1s down-enter;
+}
+
+@keyframes down-enter {
+  0% {
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    clip-path: inset(0);
+  }
 }
 
 .title {
-  font-size: 1.9rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  font-style: italic;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   overflow-wrap: break-word;
 }
 
 .content {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .edit-button {

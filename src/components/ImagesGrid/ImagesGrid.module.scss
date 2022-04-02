@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  height: 30rem;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  border: 1px solid black;
+  background-color: rgb(68, 68, 68);
+}
+
+.image-container {
+  flex: 0 0 33%;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.selected-image {
+  border: 1px solid black;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}

@@ -17,7 +17,6 @@ export const getDocumentData = async (collectionName, documentName) => {
 
 export const updateDocument = async (collectionName, documentName, diff) => {
   const docRef = doc(db, collectionName, documentName);
-  console.log(docRef, diff);
   await updateDoc(docRef, diff);
 };
 

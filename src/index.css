@@ -7,7 +7,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
+  /* -webkit-touch-callout: none !important; */
 }
+
+/* a {
+  -webkit-user-select: none !important;
+} */
 
 html {
   font-size: 62.5%;
